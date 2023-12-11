@@ -11,7 +11,7 @@
                   Name="Right"
                   IsChecked="False" />
         <Grid Height="50"
-              local:AnimateSlideInFromRightProperty.Value="{Binding ElementName=Right,Path=IsChecked,Mode=TwoWay}">
+              local:AnimateSlideInFromLeftPropertyPro.Value="{Binding ElementName=Right,Path=IsChecked,Mode=TwoWay}">
             <Border Background="Red" />
         </Grid>
 
