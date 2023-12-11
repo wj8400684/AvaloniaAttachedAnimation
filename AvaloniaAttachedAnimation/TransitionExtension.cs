@@ -17,14 +17,16 @@ public static class TransitionExtension
 
         element.Margin = new Thickness(0);
 
-        element.Transitions = new Transitions
+        element.Transitions ??= new Transitions();
+        
+        if (element.Transitions.Count > 0)
+            element.Transitions.Clear();
+        
+        element.Transitions.Add(new ThicknessTransition
         {
-            new ThicknessTransition()
-            {
-                Duration = TimeSpan.FromSeconds(seconds),
-                Property = Layoutable.MarginProperty,
-            }
-        };
+            Duration = TimeSpan.FromSeconds(seconds),
+            Property = Layoutable.MarginProperty,
+        });
 
         //首次加载应该显示出来
         if (firstLoad)
@@ -61,15 +63,17 @@ public static class TransitionExtension
             _ => throw new ArgumentOutOfRangeException(nameof(direction), direction, null)
         };
 
-        element.Transitions = new Transitions
-        {
-            new ThicknessTransition()
-            {
-                Duration = TimeSpan.FromSeconds(seconds),
-                Property = Layoutable.MarginProperty,
-            }
-        };
+        element.Transitions ??= new Transitions();
 
+        if (element.Transitions.Count > 0)
+            element.Transitions.Clear();
+        
+        element.Transitions.Add(new ThicknessTransition
+        {
+            Duration = TimeSpan.FromSeconds(seconds),
+            Property = Layoutable.MarginProperty,
+        });
+        
         // Make page visible only if we are animating or its the first load
         if (firstLoad)//首次加载应该显示出来
             element.Opacity = 1;

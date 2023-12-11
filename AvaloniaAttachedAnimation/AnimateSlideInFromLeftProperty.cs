@@ -110,11 +110,9 @@ public class AnimateSlideInFromRightProperty : AnimateSlideInFromLeftPropertyBas
     protected override async void DoAnimation(Control element, bool value, bool firstLoad)
     {
         if (value)
-            // Animate in
             await element.SlideAndFadeInAsync(AnimationSlideInDirection.Right, firstLoad, firstLoad ? 0 : 0.3f,
                 keepMargin: true);
         else
-            // Animate out
             await element.SlideAndFadeOutAsync(AnimationSlideInDirection.Right, firstLoad ? 0 : 0.3f, keepMargin: true,
                 firstLoad: firstLoad);
     }
